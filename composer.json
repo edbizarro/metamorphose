@@ -1,0 +1,36 @@
+{
+    "name": "power-data-hub/metamorphose",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^7.1.3"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^3.6",
+        "phpunit/phpunit": "^7.0",
+        "friendsofphp/php-cs-fixer": "^2.11"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ],
+        "psr-4": {
+            "PowerDataHub\\Metamorphose\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PowerDataHub\\Metamorphose\\Tests\\": "tests/"
+        }
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "extra": {
+      "laravel": {
+        "providers": [
+          "PowerDataHub\\Metamorphose\\MetamorphoseServiceProvider"
+        ]
+      }
+    }
+
+}
