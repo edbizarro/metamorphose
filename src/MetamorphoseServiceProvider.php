@@ -28,7 +28,7 @@ class MetamorphoseServiceProvider extends ServiceProvider
         $this->configure();
         $this->offerPublishing();
 
-        $this->app->singleton(Metamorphose::class);
+        $this->app->bind(Metamorphose::class);
     }
 
     protected function configure()

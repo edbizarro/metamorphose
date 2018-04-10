@@ -47,9 +47,9 @@ class TransformPipeline
      *
      * @return static
      */
-    public static function create($data, string $source)
+    public static function create($data, string $source, $configs = [])
     {
-        return new static($data, $source);
+        return new static($data, $source, $configs);
     }
 
     public function run()
