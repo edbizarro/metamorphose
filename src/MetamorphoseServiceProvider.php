@@ -28,7 +28,13 @@ class MetamorphoseServiceProvider extends ServiceProvider
         $this->configure();
         $this->offerPublishing();
 
-        $this->app->bind(Metamorphose::class);
+        $this->app->bind(Metamorphose::class, function ($app) {
+            return $this->createInstance();
+        });
+
+        $this->app->singleton('metamorphose', function ($app) {
+            return $this->createInstance();
+        });
     }
 
     protected function configure()
@@ -49,10 +55,22 @@ class MetamorphoseServiceProvider extends ServiceProvider
     }
 
     /**
-     * @return bool
+     * @return FacebookAds
      */
-    private function isLumen()
+    protected function createInstance()
     {
-        return true === str_contains($this->app->version(), 'Lumen');
+        return (new Metamorphose)->with(
+            config('transformers.default')
+        );
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return ['metamorphose'];
     }
 }

@@ -14,9 +14,16 @@ class Metamorphose
      */
     protected $sourcesTransformers = [];
 
-    protected $source;
+    protected $source = null;
 
-    public function transform($data, $source = null, $configs = [])
+    /**
+     * @param $data
+     * @param strin|null $source
+     * @param array $configs
+     *
+     * @return mixed
+     */
+    public function transform($data, strin $source = null, array $configs = [])
     {
         if ($source !== null) {
             $this->setSource($source);

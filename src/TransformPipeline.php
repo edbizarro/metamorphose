@@ -32,7 +32,7 @@ class TransformPipeline
      * @param $data
      * @param string $etlJob
      */
-    public function __construct($data, string $source, $configs = [])
+    public function __construct($data, string $source = null, $configs = [])
     {
 //        $this->loadTransformConfig();
         $this->parseConfig($configs);
@@ -47,7 +47,7 @@ class TransformPipeline
      *
      * @return static
      */
-    public static function create($data, string $source, $configs = [])
+    public static function create($data, string $source = null, $configs = [])
     {
         return new static($data, $source, $configs);
     }
