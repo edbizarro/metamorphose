@@ -13,7 +13,7 @@ class PercentTransformerTest extends TestCase
         $result = app(Metamorphose::class)
             ->from(100.987)
             ->through([
-                \PowerDataHub\Metamorphose\Base\PercentTransformer::class,
+                \PowerDataHub\Metamorphose\Transformers\PercentTransformer::class,
             ])
             ->transform();
 
@@ -27,7 +27,7 @@ class PercentTransformerTest extends TestCase
         $result = app(Metamorphose::class)
             ->from('100.987')
             ->through([
-                \PowerDataHub\Metamorphose\Base\PercentTransformer::class,
+                \PowerDataHub\Metamorphose\Transformers\PercentTransformer::class,
             ])
             ->transform();
 

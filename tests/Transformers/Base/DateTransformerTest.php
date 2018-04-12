@@ -13,7 +13,7 @@ class DateTransformerTest extends TestCase
         $result = app(Metamorphose::class)
             ->from('20170505')
             ->through([
-                \PowerDataHub\Metamorphose\Base\DateTransformer::class,
+                \PowerDataHub\Metamorphose\Transformers\DateTransformer::class,
             ])
             ->transform();
 

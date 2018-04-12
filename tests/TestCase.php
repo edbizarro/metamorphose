@@ -17,7 +17,7 @@ abstract class TestCase extends OrchestraTest
     protected function defaultTransformers()
     {
         return [
-            \PowerDataHub\Metamorphose\Base\TrimTransformer::class,
+            \PowerDataHub\Metamorphose\Transformers\TrimTransformer::class,
         ];
     }
 
@@ -25,10 +25,10 @@ abstract class TestCase extends OrchestraTest
     {
         return [
             'ga' => [
-                'bounceRate' => \PowerDataHub\Metamorphose\Base\PercentTransformer::class,
-                'sessions' => \PowerDataHub\Metamorphose\Base\NumericTransformer::class,
-                'avgSessionDuration' => \PowerDataHub\Metamorphose\Base\NumericTransformer::class,
-                'date' => \PowerDataHub\Metamorphose\Base\DateTransformer::class,
+                'bounceRate' => \PowerDataHub\Metamorphose\Transformers\PercentTransformer::class,
+                'sessions' => \PowerDataHub\Metamorphose\Transformers\NumericTransformer::class,
+                'avgSessionDuration' => \PowerDataHub\Metamorphose\Transformers\NumericTransformer::class,
+                'date' => \PowerDataHub\Metamorphose\Transformers\DateTransformer::class,
             ],
         ];
     }
