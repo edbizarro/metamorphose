@@ -4,7 +4,8 @@
     "description": "ETL",
     "license": "MIT",
     "require": {
-        "php": "^7.1.3"
+        "php": "^7.1.3",
+        "cakephp/chronos": "^1.1"
     },
     "require-dev": {
         "orchestra/testbench": "^3.6",
