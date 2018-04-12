@@ -2,6 +2,7 @@
 
 namespace PowerDataHub\Metamorphose\Tests;
 
+use PowerDataHub\Metamorphose\Base\TrimTransformer;
 use PowerDataHub\Metamorphose\Metamorphose;
 
 class MetamorphoseTest extends TestCase
@@ -32,6 +33,20 @@ class MetamorphoseTest extends TestCase
             ->transform();
 
         $this->assertTrue(is_numeric($result['sessions']));
+        $this->assertEquals(100, $result['sessions']);
+    }
+
+    /** @test */
+    public function it_can_transform_with_transformers_passed_as_string()
+    {
+        $result = app(Metamorphose::class)
+            ->from([
+                'sessions' => ' 100 ',
+            ])
+            ->sourceType('ga')
+            ->through(TrimTransformer::class)
+            ->transform();
+
         $this->assertEquals(100, $result['sessions']);
     }
 

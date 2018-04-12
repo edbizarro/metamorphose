@@ -59,9 +59,9 @@ class Metamorphose
      *
      * @return $this
      */
-    public function through(array $transformers, array $sourceTransformers = []): self
+    public function through($transformers, array $sourceTransformers = []): self
     {
-        $this->defaultTransformers = $transformers;
+        $this->defaultTransformers = (array) $transformers;
 
         if (\count($sourceTransformers) > 0) {
             $this->sourceConfig->load($sourceTransformers);
@@ -81,7 +81,7 @@ class Metamorphose
         return $this->applySource($this->applyDefault($this->from));
     }
 
-    protected function applyDefault($value, $key = null): ?string
+    protected function applyDefault($value, $key = null)
     {
         return $this->apply(
             $this->defaultTransformers,
@@ -90,7 +90,7 @@ class Metamorphose
         );
     }
 
-    protected function applySource($value, $key = null): ?string
+    protected function applySource($value, $key = null)
     {
         return $this->apply(
             $this->sourceConfig->getBySource($this->sourceType),
@@ -99,7 +99,7 @@ class Metamorphose
         );
     }
 
-    protected function apply(array $transformers, array $value, string $type): ?string
+    protected function apply(array $transformers, array $value, string $type)
     {
         $key = \key($value);
         $value = \array_values($value)[0];
