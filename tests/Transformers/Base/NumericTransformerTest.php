@@ -2,9 +2,9 @@
 
 namespace PowerDataHub\Metamorphose\Tests\Transformers\Base;
 
-use PowerDataHub\Metamorphose\Base\NumericTransformer;
 use PowerDataHub\Metamorphose\Metamorphose;
 use PowerDataHub\Metamorphose\Tests\TestCase;
+use PowerDataHub\Metamorphose\Base\NumericTransformer;
 
 class NumericTransformerTest extends TestCase
 {
