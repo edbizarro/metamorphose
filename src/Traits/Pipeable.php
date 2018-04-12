@@ -5,7 +5,7 @@ namespace PowerDataHub\Metamorphose\Traits;
 use Closure;
 
 /**
- * Trait Pipeable
+ * Trait Pipeable.
  */
 trait Pipeable
 {

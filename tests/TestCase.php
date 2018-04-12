@@ -10,7 +10,7 @@ abstract class TestCase extends OrchestraTest
     protected function getPackageProviders($app)
     {
         return [
-            MetamorphoseServiceProvider::class
+            MetamorphoseServiceProvider::class,
         ];
     }
 
@@ -29,7 +29,7 @@ abstract class TestCase extends OrchestraTest
                 'sessions' => \PowerDataHub\Metamorphose\Base\NumericTransformer::class,
                 'avgSessionDuration' => \PowerDataHub\Metamorphose\Base\NumericTransformer::class,
                 'date' => \PowerDataHub\Metamorphose\Base\DateTransformer::class,
-            ]
+            ],
         ];
     }
 }

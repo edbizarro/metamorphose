@@ -19,6 +19,6 @@ return [
             'CPC' => \PowerDataHub\Metamorphose\Base\NumericTransformer::class,
             'CPM' => \PowerDataHub\Metamorphose\Base\NumericTransformer::class,
             'CTR' => \PowerDataHub\Metamorphose\Base\NumericTransformer::class,
-        ]
-    ]
+        ],
+    ],
 ];

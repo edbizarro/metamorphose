@@ -22,7 +22,7 @@ class MetamorphoseTest extends TestCase
     {
         $result = app(Metamorphose::class)
             ->from([
-                'sessions' => '100'
+                'sessions' => '100',
             ])
             ->sourceType('ga')
             ->through(

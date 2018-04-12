@@ -2,8 +2,8 @@
 
 namespace PowerDataHub\Metamorphose\Base;
 
-use PowerDataHub\Metamorphose\BaseTransformer;
 use Cake\Chronos\Chronos;
+use PowerDataHub\Metamorphose\BaseTransformer;
 
 class DateTransformer extends BaseTransformer
 {
