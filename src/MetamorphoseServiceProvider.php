@@ -73,6 +73,6 @@ class MetamorphoseServiceProvider extends ServiceProvider
      */
     public function provides(): array
     {
-        return ['metamorphose'];
+        return [Metamorphose::class];
     }
 }

@@ -35,6 +35,9 @@ class Metamorphose
      */
     public function from($from): self
     {
+        if (\is_array($from)) {
+            $from = array_change_key_case($from, CASE_LOWER);
+        }
         $this->from = $from;
 
         return $this;
