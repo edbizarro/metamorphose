@@ -1,5 +1,5 @@
 <p align="center">
-    <img width="200" src="http://guidesmedia.ign.com/guides/059687/images/blackwhite/pokemans_014.gif">
+    <img width="200" src="https://camo.githubusercontent.com/3c70731e6e331fd56475a324e5f7ef9f10469493/687474703a2f2f6775696465736d656469612e69676e2e636f6d2f6775696465732f3035393638372f696d616765732f626c61636b77686974652f706f6b656d616e735f3031342e676966">
 </p>
 <p align="center">
   <a href="https://styleci.io/repos/120142568"><img src="https://styleci.io/repos/120142568/shield?branch=master" alt="StyleCI"></a>  
