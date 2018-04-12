@@ -10,20 +10,44 @@ class MetamorphoseTest extends TestCase
     public function it_can_transform()
     {
         $result = app(Metamorphose::class)
-            ->with($this->defaultTransformers())
-            ->transform(' text ');
+            ->from(' John Doe ')
+            ->through($this->defaultTransformers())
+            ->transform();
 
-        $this->assertEquals('text', $result);
+        $this->assertEquals('John Doe', $result);
     }
 
     /** @test */
     public function it_can_transform_with_source()
     {
         $result = app(Metamorphose::class)
-            ->source('csv')
-            ->with($this->defaultTransformers())
-            ->transform(' text ');
+            ->from([
+                'sessions' => '100'
+            ])
+            ->sourceType('ga')
+            ->through(
+                $this->defaultTransformers(),
+                $this->sourcesTransformers()
+            )
+            ->transform();
 
-        $this->assertEquals('text', $result);
+        $this->assertTrue(is_numeric($result['sessions']));
+        $this->assertEquals(100, $result['sessions']);
+    }
+
+    /** @test */
+    public function it_can_transform_an_array()
+    {
+        $result = app(Metamorphose::class)
+            ->from([
+                'name' => ' John Doe ',
+                'email' => ' johndoe@gmail.com ',
+            ])
+            ->through($this->defaultTransformers())
+            ->transform();
+
+        $this->arrayHasKey('name', $result);
+        $this->assertEquals('John Doe', $result['name']);
+        $this->assertEquals('johndoe@gmail.com', $result['email']);
     }
 }
