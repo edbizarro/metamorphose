@@ -2,8 +2,8 @@
 
 namespace PowerDataHub\Metamorphose\Tests;
 
-use PowerDataHub\Metamorphose\Base\TrimTransformer;
 use PowerDataHub\Metamorphose\Metamorphose;
+use PowerDataHub\Metamorphose\Base\TrimTransformer;
 
 class MetamorphoseTest extends TestCase
 {
