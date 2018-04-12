@@ -5,87 +5,56 @@ namespace PowerDataHub\Metamorphose;
 use PowerDataHub\Metamorphose\Interfaces\TransformInterface;
 use PowerDataHub\Metamorphose\Traits\Pipeable;
 use Closure;
-use Illuminate\Support\Arr;
 
 class BaseTransformer implements TransformInterface
 {
     use Pipeable;
 
-    protected $sourceConfig;
-    protected $defaultConfig;
-    protected $clientConfig;
-
-    public function handle(array $content, Closure $next)
+    /**
+     * @param array $content
+     * @param Closure $next
+     *
+     * @return mixed
+     */
+    public function handle($content, Closure $next)
     {
-        if (is_array($content['data']) === false) {
-            return $next($this->transform($content['data']));
+        $content['class'] = \get_class($this);
+
+        $data = $content['result'] ?? $content['data'];
+
+        switch ($content['type']) {
+            case 'default':
+                $data = $this->transform($data);
+                break;
+            case 'source':
+                $data = $this->applySourceTransformations(
+                    $content,
+                    $data
+                );
+                break;
+            default:
+                dd('default');
+                break;
         }
 
-        $this->sourceConfig = $content['sourceConfig'];
-        $this->defaultConfig = $content['defaultConfig'];
-        $this->clientConfig = [];
-
-        $content['data'] = collect($content['data'])->map(function ($value, $key) {
-            if (! $this->shouldTransform($key)) {
-                return $value;
-            }
-
-            $value = $this->applyDefaultTransformations($value, $key);
-            $value = $this->applySourceTransformations($value, $key);
-            $value = $this->applyClientTransformations($value, $key);
-
-            return $value;
-        })->all();
+        $content['result'] = $data;
 
         return $next($content);
     }
 
     public function transform($content)
     {
-        return $content;
     }
 
     /**
-     * @param $key
-     *
-     * @return bool
-     */
-    protected function shouldTransform($key): bool
-    {
-        if (is_null(Arr::get($this->defaultConfig, $key)) &&
-            is_null(Arr::get($this->sourceConfig, $key)) &&
-            is_null(Arr::get($this->clientConfig, $key))
-        ) {
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
+     * @param array $params
      * @param $value
-     * @param $key
      *
      * @return mixed
      */
-    protected function applyDefaultTransformations($value, $key)
+    protected function applySourceTransformations(array $params, $value)
     {
-        if (Arr::get($this->defaultConfig, $key) === \get_class($this)) {
-            return $this->transform($value);
-        }
-
-        return $value;
-    }
-
-    /**
-     * @param $value
-     * @param $key
-     *
-     * @return mixed
-     */
-    protected function applySourceTransformations($value, $key)
-    {
-        if (Arr::get($this->sourceConfig, $key) === \get_class($this)) {
+        if ($this->shouldApplySourceTransformer($params['sourceConfig'], $params['source'], $params['key'])) {
             $value = $this->transform($value);
         }
 
@@ -93,13 +62,14 @@ class BaseTransformer implements TransformInterface
     }
 
     /**
-     * @param $value
+     * @param SourceConfig $sourceConfig
+     * @param $source
      * @param $key
      *
-     * @return mixed
+     * @return bool
      */
-    protected function applyClientTransformations($value, $key)
+    protected function shouldApplySourceTransformer(SourceConfig $sourceConfig, $source, $key): bool
     {
-        return $value;
+        return $sourceConfig->getBySourceAndKey($source, $key) === \get_class($this);
     }
 }
