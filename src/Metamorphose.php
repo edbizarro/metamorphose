@@ -23,12 +23,10 @@ class Metamorphose
      */
     protected $sourceConfig;
 
-
     public function __construct(SourceConfig $sourceConfig)
     {
         $this->sourceConfig = $sourceConfig;
     }
-
 
     /**
      * @param array|string $from
@@ -53,7 +51,6 @@ class Metamorphose
 
         return $this;
     }
-
 
     /**
      * @param array $transformers
@@ -101,7 +98,6 @@ class Metamorphose
             'source'
         );
     }
-
 
     protected function apply(array $transformers, array $value, string $type): ?string
     {
