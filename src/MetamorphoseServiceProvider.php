@@ -16,14 +16,14 @@ class MetamorphoseServiceProvider extends ServiceProvider
     /**
      * Bootstrap the application services.
      */
-    public function boot()
+    public function boot(): void
     {
     }
 
     /**
      * Register the application services.
      */
-    public function register()
+    public function register(): void
     {
         $this->configure();
         $this->offerPublishing();
@@ -37,7 +37,7 @@ class MetamorphoseServiceProvider extends ServiceProvider
         });
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->mergeConfigFrom(
             __DIR__.'/../config/transformers.php',
@@ -45,7 +45,7 @@ class MetamorphoseServiceProvider extends ServiceProvider
         );
     }
 
-    protected function offerPublishing()
+    protected function offerPublishing(): void
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
@@ -55,11 +55,13 @@ class MetamorphoseServiceProvider extends ServiceProvider
     }
 
     /**
-     * @return FacebookAds
+     * @return Metamorphose
      */
-    protected function createInstance()
+    protected function createInstance(): Metamorphose
     {
-        return (new Metamorphose)->with(
+        return (new Metamorphose(
+            new SourceConfig(config('transformers.sources'))
+        ))->through(
             config('transformers.default')
         );
     }
@@ -69,7 +71,7 @@ class MetamorphoseServiceProvider extends ServiceProvider
      *
      * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return ['metamorphose'];
     }
