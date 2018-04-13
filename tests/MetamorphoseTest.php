@@ -81,6 +81,5 @@ class MetamorphoseTest extends TestCase
         $this->arrayHasKey('email', $result);
         $this->assertArrayNotHasKey('Name', $result);
         $this->assertArrayNotHasKey('EMAIL', $result);
-
     }
 }

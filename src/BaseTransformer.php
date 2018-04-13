@@ -32,8 +32,6 @@ class BaseTransformer implements TransformInterface
                     $data
                 );
                 break;
-            default:
-                break;
         }
 
         $content['result'] = $data;
