@@ -29,6 +29,8 @@ $result = app(Metamorphose::class)
 ['name' => 'John Doe']
 ```
 
+> All keys are lowered by default, so ['Name' => 'bla'] will become ['name' => 'bla']
+
 You can pass as many transformers as you want:
 
 
@@ -41,9 +43,9 @@ use \PowerDataHub\Metamorphose\Metamorphose;
 app(Metamorphose::class)
     ->from(['Name' => ' John Doe ', 'age' => '33', 'score' => '33.987'])
     ->through([
-        PercentTransformer::class,
-        TrimTransformer::class
-        NumericTransformer::class
+        TrimTransformer::class,
+        PercentTransformer::class,        
+        NumericTransformer::class,
     ])
     ->transform();
     
@@ -57,6 +59,7 @@ app(Metamorphose::class)
 Metamorphose come with some useful transformers
 
 #### Trim
+
 Loaded by default and applied in all fields
 
 #### Date
