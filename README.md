@@ -12,3 +12,18 @@
 <p align="center">
   <h2>Metamorphose</h2>
 </p>
+
+Here are a few examples on how you can use the package:
+
+```php
+$result = app(Metamorphose::class)
+    ->from(['Name' => ' John Doe ')
+    ->through(\PowerDataHub\Metamorphose\Transformers\TrimTransformer) // TrimTransformer is loaded by default, you can safely omit this line
+    ->transform();
+```
+
+`$result`
+
+```php
+['name' => 'John Doe']
+```
