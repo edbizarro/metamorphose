@@ -31,6 +31,29 @@ $result = app(Metamorphose::class)
 ['name' => 'John Doe']
 ```
 
+You can pass as many transformers as you want:
+
+
+```php
+use \PowerDataHub\Metamorphose\Transformers\TrimTransformer;
+use \PowerDataHub\Metamorphose\Transformers\PercentTransformer;
+use \PowerDataHub\Metamorphose\Transformers\NumericTransformer;
+use \PowerDataHub\Metamorphose\Metamorphose;
+
+app(Metamorphose::class)
+    ->from(['Name' => ' John Doe ', 'age' => '33', 'score' => '33.987'])
+    ->through([
+        PercentTransformer::class,
+        TrimTransformer::class
+        NumericTransformer::class
+    ])
+    ->transform();
+    
+//Output
+
+['name' => 'John Doe', 'age' => 33, 'score' => 33.99]
+```
+
 ### Transformers
 
 Metamorphose come with some useful transformers
