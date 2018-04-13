@@ -20,7 +20,7 @@ use \PowerDataHub\Metamorphose\Transformers\TrimTransformer;
 use \PowerDataHub\Metamorphose\Metamorphose;
 
 $result = app(Metamorphose::class)
-    ->from(['Name' => ' John Doe ')
+    ->from(['name' => ' John Doe ')
     ->through(TrimTransformer::class) // TrimTransformer is loaded by default, you can safely omit this line
     ->transform();
 
@@ -28,8 +28,6 @@ $result = app(Metamorphose::class)
 
 ['name' => 'John Doe']
 ```
-
-> All keys are lowered by default, so ['Name' => 'bla'] will become ['name' => 'bla']
 
 You can pass as many transformers as you want:
 
@@ -41,7 +39,7 @@ use \PowerDataHub\Metamorphose\Transformers\NumericTransformer;
 use \PowerDataHub\Metamorphose\Metamorphose;
 
 app(Metamorphose::class)
-    ->from(['Name' => ' John Doe ', 'age' => '33', 'score' => '33.987'])
+    ->from(['name' => ' John Doe ', 'age' => '33', 'score' => '33.987'])
     ->through([
         TrimTransformer::class,
         PercentTransformer::class,        
