@@ -52,7 +52,7 @@ app(Metamorphose::class)
 ['name' => 'John Doe', 'age' => 33, 'score' => 33.99]
 ```
 
-### Transformers
+## Transformers
 
 Metamorphose come with some useful transformers
 
