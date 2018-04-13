@@ -16,9 +16,12 @@
 Here are a few examples on how you can use the package:
 
 ```php
+use \PowerDataHub\Metamorphose\Transformers\TrimTransformer;
+use \PowerDataHub\Metamorphose\Metamorphose;
+
 $result = app(Metamorphose::class)
     ->from(['Name' => ' John Doe ')
-    ->through(\PowerDataHub\Metamorphose\Transformers\TrimTransformer) // TrimTransformer is loaded by default, you can safely omit this line
+    ->through(TrimTransformer::class) // TrimTransformer is loaded by default, you can safely omit this line
     ->transform();
 ```
 
@@ -26,4 +29,39 @@ $result = app(Metamorphose::class)
 
 ```php
 ['name' => 'John Doe']
+```
+
+### Transformers
+
+Metamorphose come with some useful transformers
+
+#### Trim
+Loaded by default and applied in all fields
+
+#### Date
+
+#### Numeric
+
+```php
+app(Metamorphose::class)
+    ->from(['sessions' => ' 876')
+    ->through(NumericTransformer::class)
+    ->transform();
+
+// Output
+
+['sessions' => 876]
+```
+
+#### Percent 
+
+```php
+app(Metamorphose::class)
+    ->from(['bounceRate' => '45.987')
+    ->through(PercentTransformer::class)
+    ->transform();
+
+// Output
+
+['bounceRate' => 45.99]
 ```
