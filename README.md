@@ -60,11 +60,13 @@ Metamorphose come with some useful transformers
 
 #### Trim
 
-Loaded by default and applied in all fields
+Loaded by default and applied to all fields
 
 #### Date
 
 #### Numeric
+
+Convert string to int
 
 ```php
 app(Metamorphose::class)
@@ -78,6 +80,8 @@ app(Metamorphose::class)
 ```
 
 #### Percent 
+
+Convert string to float and apply `round()`
 
 ```php
 app(Metamorphose::class)
