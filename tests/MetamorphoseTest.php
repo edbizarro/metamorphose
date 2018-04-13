@@ -65,21 +65,4 @@ class MetamorphoseTest extends TestCase
         $this->assertEquals('John Doe', $result['name']);
         $this->assertEquals('johndoe@gmail.com', $result['email']);
     }
-
-    /** @test */
-    public function it_can_lower_the_keys()
-    {
-        $result = app(Metamorphose::class)
-            ->from([
-                'Name' => ' John Doe ',
-                'EMAIL' => ' johndoe@gmail.com ',
-            ])
-            ->through($this->defaultTransformers())
-            ->transform();
-
-        $this->arrayHasKey('name', $result);
-        $this->arrayHasKey('email', $result);
-        $this->assertArrayNotHasKey('Name', $result);
-        $this->assertArrayNotHasKey('EMAIL', $result);
-    }
 }
