@@ -20,5 +20,10 @@ return [
             'CPM' => \PowerDataHub\Metamorphose\Transformers\NumericTransformer::class,
             'CTR' => \PowerDataHub\Metamorphose\Transformers\NumericTransformer::class,
         ],
+        'facebook-ads' => [],
+        'instagram-ads' => [],
+        'youtube-ads' => [],
+        'twitter-ads' => [],
+        'facebook-ads' => [],
     ],
 ];
