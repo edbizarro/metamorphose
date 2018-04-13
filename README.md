@@ -23,11 +23,9 @@ $result = app(Metamorphose::class)
     ->from(['Name' => ' John Doe ')
     ->through(TrimTransformer::class) // TrimTransformer is loaded by default, you can safely omit this line
     ->transform();
-```
 
-`$result`
+// Output
 
-```php
 ['name' => 'John Doe']
 ```
 
