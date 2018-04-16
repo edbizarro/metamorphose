@@ -28,13 +28,40 @@ class MetamorphoseTest extends TestCase
             ->sourceType('ga')
             ->through(
                 $this->defaultTransformers(),
-                $this->sourcesTransformers()
+                $this->sourcesTransformersWithDuplicates()
             )
             ->transform();
 
         $this->assertTrue(is_numeric($result['sessions']));
         $this->assertEquals(100, $result['sessions']);
     }
+
+    public function it_can_transform_with_source_duplicated()
+    {
+        $data = [
+            'sessions' => '124334',
+            'users' => '1987',
+            'clicks' => '923743',
+            'avgSessionDuration' => '7896',
+        ];
+
+        $result = app(Metamorphose::class)
+            ->from($data)
+            ->sourceType('ga')
+            ->through(
+                $this->defaultTransformers(),
+                $this->sourcesTransformersWithDuplicates()
+            )
+            ->transform();
+
+        foreach ($data as $item) {
+            $this->assertTrue(is_numeric($item[$item]));
+            $this->assertEquals((integer) $item, $result[$item]);
+        }
+
+
+    }
+
 
     /** @test */
     public function it_can_transform_with_transformers_passed_as_string()

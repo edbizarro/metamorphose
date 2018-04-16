@@ -32,4 +32,16 @@ abstract class TestCase extends OrchestraTest
             ],
         ];
     }
+
+    protected function sourcesTransformersWithDuplicates()
+    {
+        return [
+            'ga' => [
+                'sessions' => \PowerDataHub\Metamorphose\Transformers\NumericTransformer::class,
+                'users' => \PowerDataHub\Metamorphose\Transformers\NumericTransformer::class,
+                'clicks' => \PowerDataHub\Metamorphose\Transformers\NumericTransformer::class,
+                'avgSessionDuration' => \PowerDataHub\Metamorphose\Transformers\NumericTransformer::class,
+            ],
+        ];
+    }
 }
