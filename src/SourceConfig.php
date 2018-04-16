@@ -35,7 +35,6 @@ class SourceConfig
         }
 
         $sourceTransformers = collect($this->config[$source])
-            ->unique()
             ->all();
 
         return $sourceTransformers;
@@ -47,8 +46,7 @@ class SourceConfig
             return [];
         }
 
-        $sourceTransformers = collect($this->config[$source])
-            ->unique();
+        $sourceTransformers = collect($this->config[$source]);
 
         return $sourceTransformers->get($key);
     }
