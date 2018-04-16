@@ -52,6 +52,20 @@ app(Metamorphose::class)
 ['name' => 'John Doe', 'age' => 33, 'score' => 33.99]
 ```
 
+
+
+## Installation
+
+You can install the package via composer:
+
+``` bash
+composer require power-data-hub/metamorphose
+```
+
+---
+
+[![forthebadge](http://forthebadge.com/images/badges/contains-cat-gifs.svg)](http://forthebadge.com)
+
 ## Transformers
 
 Metamorphose come with some useful transformers
