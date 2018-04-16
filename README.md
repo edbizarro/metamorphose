@@ -11,6 +11,8 @@
   <a href="https://packagist.org/packages/power-data-hub/metamorphose"><img src="https://poser.pugx.org/power-data-hub/metamorphose/license.svg" alt="License"></a>
 </p>
 
+---
+
 Here are a few examples on how you can use the package:
 
 ```php
