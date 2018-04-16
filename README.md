@@ -80,13 +80,13 @@ Convert string to int
 
 ```php
 app(Metamorphose::class)
-    ->from(['sessions' => ' 876')
+    ->from(['sessions' => '876', 'users' => '233'])
     ->through(NumericTransformer::class)
     ->transform();
 
 // Output
 
-['sessions' => 876]
+['sessions' => 876, 'users' => 233]
 ```
 
 #### Percent 
@@ -95,13 +95,13 @@ Convert string to float and apply `round()`
 
 ```php
 app(Metamorphose::class)
-    ->from(['bounceRate' => '45.987')
+    ->from(['bounceRate' => '45.987', 'newSessions' => '15.777'])
     ->through(PercentTransformer::class)
     ->transform();
 
 // Output
 
-['bounceRate' => 45.99]
+['bounceRate' => 45.99, 'newSessions' => 15.78]
 ```
 
 [![forthebadge](http://forthebadge.com/images/badges/contains-cat-gifs.svg)](http://forthebadge.com)
