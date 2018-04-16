@@ -64,8 +64,6 @@ composer require power-data-hub/metamorphose
 
 ---
 
-[![forthebadge](http://forthebadge.com/images/badges/contains-cat-gifs.svg)](http://forthebadge.com)
-
 ## Transformers
 
 Metamorphose come with some useful transformers
@@ -105,3 +103,5 @@ app(Metamorphose::class)
 
 ['bounceRate' => 45.99]
 ```
+
+[![forthebadge](http://forthebadge.com/images/badges/contains-cat-gifs.svg)](http://forthebadge.com)
