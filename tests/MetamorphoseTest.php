@@ -58,8 +58,6 @@ class MetamorphoseTest extends TestCase
             $this->assertTrue(is_numeric($item[$item]));
             $this->assertEquals((integer) $item, $result[$item]);
         }
-
-
     }
 
 
