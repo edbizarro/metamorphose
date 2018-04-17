@@ -35,6 +35,8 @@ class SourceConfig
         }
 
         $sourceTransformers = collect($this->config[$source])
+            ->values()
+            ->unique()
             ->all();
 
         return $sourceTransformers;
