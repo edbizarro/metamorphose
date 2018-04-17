@@ -125,7 +125,7 @@ class Metamorphose
         if (\count($transformers) === 0) {
             return $value;
         }
-        
+
         return app(Pipeline::class)
             ->send([
                 'data' => $value,
