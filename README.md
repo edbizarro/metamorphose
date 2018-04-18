@@ -9,6 +9,7 @@
   <a href="https://codeclimate.com/github/edbizarro/metamorphose/maintainability"><img src="https://api.codeclimate.com/v1/badges/25524f733a23fb514c5c/maintainability" /></a>
   <a href="https://packagist.org/packages/power-data-hub/metamorphose"><img src="https://poser.pugx.org/power-data-hub/metamorphose/v/stable.svg" alt="Latest Stable Version"></a>
   <a href="https://packagist.org/packages/power-data-hub/metamorphose"><img src="https://poser.pugx.org/power-data-hub/metamorphose/license.svg" alt="License"></a>
+    <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fedbizarro%2Fmetamorphose?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fedbizarro%2Fmetamorphose.svg?type=small"/></a>
 </p>
 
 ---
