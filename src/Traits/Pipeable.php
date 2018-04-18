@@ -13,4 +13,6 @@ trait Pipeable
     {
         return  $next($this->transform($content));
     }
+
+    abstract public function transform($content);
 }
