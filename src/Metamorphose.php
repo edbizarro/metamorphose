@@ -6,6 +6,9 @@ use Illuminate\Pipeline\Pipeline;
 
 class Metamorphose
 {
+    /**
+     * @var mixed
+     */
     protected $from;
 
     /**
@@ -23,6 +26,11 @@ class Metamorphose
      */
     protected $sourceConfig;
 
+    /**
+     * Metamorphose constructor.
+     *
+     * @param SourceConfig $sourceConfig
+     */
     public function __construct(SourceConfig $sourceConfig)
     {
         $this->sourceConfig = $sourceConfig;
@@ -41,7 +49,7 @@ class Metamorphose
     }
 
     /**
-     * @param $sourceType
+     * @param string $sourceType
      *
      * @return $this
      */
@@ -53,8 +61,7 @@ class Metamorphose
     }
 
     /**
-     * @param array $transformers
-     *
+     * @param mixed $transformers
      * @param array $sourceTransformers
      *
      * @return $this
@@ -62,10 +69,8 @@ class Metamorphose
     public function through($transformers, array $sourceTransformers = []): self
     {
         $this->defaultTransformers = (array) $transformers;
+        $this->sourceConfig->load($sourceTransformers);
 
-        if (\count($sourceTransformers) > 0) {
-            $this->sourceConfig->load($sourceTransformers);
-        }
 
         return $this;
     }
