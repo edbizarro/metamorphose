@@ -6,7 +6,7 @@ use Closure;
 
 interface TransformInterface
 {
-    public function transform($field, $original);
+    public function transform($field);
 
     public function handle($content, Closure $next);
 }

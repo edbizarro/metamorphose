@@ -85,8 +85,7 @@ class Metamorphose
                         $key,
                         $this->from
                     ),
-                    $key,
-                    $this->from
+                    $key
                 );
             })->all();
         }
@@ -94,35 +93,32 @@ class Metamorphose
         return $this->applySource(
             $this->applyDefault(
                 $this->from,
-                null,
-                $this->from
+                null
             ),
             null,
             $this->from
         );
     }
 
-    protected function applyDefault($value, $key = null, $completeData)
+    protected function applyDefault($value, $key = null)
     {
         return $this->apply(
             $this->defaultTransformers,
             [$key => $value],
-            $completeData,
             'default'
         );
     }
 
-    protected function applySource($value, $key = null, $completeData)
+    protected function applySource($value, $key = null)
     {
         return $this->apply(
             $this->sourceConfig->getBySource($this->sourceType),
             [$key => $value],
-            $completeData,
             'source'
         );
     }
 
-    protected function apply(array $transformers, array $value, $completeData, string $type)
+    protected function apply(array $transformers, array $value, string $type)
     {
         $key = \key($value);
         $value = \array_values($value)[0];
@@ -137,8 +133,7 @@ class Metamorphose
                 'key' => $key,
                 'source' => $this->sourceType,
                 'sourceConfig' => $this->sourceConfig,
-                'type' => $type,
-                'all' => $completeData,
+                'type' => $type
             ])
             ->through($transformers)
             ->then(function ($data) {

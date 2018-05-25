@@ -6,7 +6,7 @@ use PowerDataHub\Metamorphose\BaseTransformer;
 
 class TrimTransformer extends BaseTransformer
 {
-    public function transform($value, $original)
+    public function transform($value)
     {
         return trim($value);
     }

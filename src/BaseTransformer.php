@@ -21,17 +21,15 @@ class BaseTransformer implements TransformInterface
         $content['class'] = \get_class($this);
 
         $value = $content['result'] ?? $content['data'];
-        $originalData = $content['all'] ?? [];
 
         switch ($content['type']) {
             case 'default':
-                $value = $this->transform($value, $originalData);
+                $value = $this->transform($value);
                 break;
             case 'source':
                 $value = $this->applySourceTransformations(
                     $content,
-                    $value,
-                    $originalData
+                    $value
                 );
                 break;
         }
@@ -41,9 +39,7 @@ class BaseTransformer implements TransformInterface
         return $next($content);
     }
 
-    public function transform($field, $original)
-    {
-    }
+    public function transform($field) {}
 
     /**
      * @param array $params
@@ -51,10 +47,10 @@ class BaseTransformer implements TransformInterface
      *
      * @return mixed
      */
-    protected function applySourceTransformations(array $params, $value, $completeData)
+    protected function applySourceTransformations(array $params, $value)
     {
         if ($this->shouldApplySourceTransformer($params['sourceConfig'], $params['source'], $params['key'])) {
-            $value = $this->transform($value, $completeData);
+            $value = $this->transform($value);
         }
 
         return $value;

@@ -7,7 +7,7 @@ use PowerDataHub\Metamorphose\BaseTransformer;
 
 class DateTransformer extends BaseTransformer
 {
-    public function transform($value, $original)
+    public function transform($value)
     {
         return Chronos::createFromFormat('Ymd', $value)->format('Y-m-y');
     }

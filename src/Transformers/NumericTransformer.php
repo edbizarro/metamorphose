@@ -6,7 +6,7 @@ use PowerDataHub\Metamorphose\BaseTransformer;
 
 class NumericTransformer extends BaseTransformer
 {
-    public function transform($value, $original)
+    public function transform($value)
     {
         return (int) $value;
     }
