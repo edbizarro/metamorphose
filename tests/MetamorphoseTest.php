@@ -36,6 +36,7 @@ class MetamorphoseTest extends TestCase
         $this->assertEquals(100, $result['sessions']);
     }
 
+    /** @test */
     public function it_can_transform_with_source_duplicated()
     {
         $data = [
@@ -54,9 +55,9 @@ class MetamorphoseTest extends TestCase
             )
             ->transform();
 
-        foreach ($data as $item) {
-            $this->assertTrue(is_numeric($item[$item]));
-            $this->assertEquals((integer) $item, $result[$item]);
+        foreach ($data as $key => $item) {
+            $this->assertTrue(is_numeric($result[$key]));
+            $this->assertEquals((integer) $item, $result[$key]);
         }
     }
 
