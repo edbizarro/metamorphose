@@ -21,7 +21,7 @@ use \PowerDataHub\Metamorphose\Metamorphose;
 
 $result = app(Metamorphose::class)
     ->from(['name' => ' John Doe ')
-    ->through(TrimTransformer::class) // TrimTransformer is loaded by default, you can safely omit this line
+    ->through(TrimTransformer::class)
     ->transform();
 
 // Output
@@ -70,38 +70,15 @@ Metamorphose come with some useful transformers
 
 #### Trim
 
-Loaded by default and applied to all fields
-
-#### Date
-
-#### Numeric
-
-Convert string to int
-
 ```php
 app(Metamorphose::class)
-    ->from(['sessions' => '876', 'users' => '233'])
+    ->from(['name' => ' John', 'last_name' => ' Doe '])
     ->through(NumericTransformer::class)
     ->transform();
 
 // Output
 
-['sessions' => 876, 'users' => 233]
-```
-
-#### Percent 
-
-Convert string to float and apply `round()`
-
-```php
-app(Metamorphose::class)
-    ->from(['bounceRate' => '45.987', 'newSessions' => '15.777'])
-    ->through(PercentTransformer::class)
-    ->transform();
-
-// Output
-
-['bounceRate' => 45.99, 'newSessions' => 15.78]
+['name' => 'John', 'last_name' => 'Doe']
 ```
 
 [![forthebadge](http://forthebadge.com/images/badges/contains-cat-gifs.svg)](http://forthebadge.com)
