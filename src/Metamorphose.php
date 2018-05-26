@@ -77,60 +77,45 @@ class Metamorphose
 
     public function transform()
     {
-        if (\is_array($this->from)) {
-            return collect($this->from)->map(function ($value, $key) {
-                return $this->applySource(
-                    $this->applyDefault(
-                        $value,
-                        $key,
-                        $this->from
-                    ),
-                    $key
-                );
-            })->all();
-        }
-
         return $this->applySource(
-            $this->applyDefault(
-                $this->from,
-                null
-            ),
-            null,
-            $this->from
+            $this->applyDefault($this->from)
         );
     }
 
-    protected function applyDefault($value, $key = null)
+    protected function applyDefault($values)
     {
         return $this->apply(
             $this->defaultTransformers,
-            [$key => $value],
+            $values,
             'default'
         );
     }
 
-    protected function applySource($value, $key = null)
+    protected function applySource($values)
     {
         return $this->apply(
             $this->sourceConfig->getBySource($this->sourceType),
-            [$key => $value],
+            $values,
             'source'
         );
     }
 
-    protected function apply(array $transformers, array $value, string $type)
+    /**
+     * @param array $transformers
+     * @param array $values
+     * @param string $type
+     *
+     * @return array
+     */
+    protected function apply(array $transformers, $values, string $type)
     {
-        $key = \key($value);
-        $value = \array_values($value)[0];
-
         if (\count($transformers) === 0) {
-            return $value;
+            return $values;
         }
 
         return app(Pipeline::class)
             ->send([
-                'data' => $value,
-                'key' => $key,
+                'data' => $values,
                 'source' => $this->sourceType,
                 'sourceConfig' => $this->sourceConfig,
                 'type' => $type

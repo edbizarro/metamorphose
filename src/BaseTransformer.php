@@ -49,7 +49,11 @@ class BaseTransformer implements TransformInterface
      */
     protected function applySourceTransformations(array $params, $value)
     {
-        if ($this->shouldApplySourceTransformer($params['sourceConfig'], $params['source'], $params['key'])) {
+        if ($this->shouldApplySourceTransformer(
+                                                $params['sourceConfig'],
+                                                $params['source'],
+                                                $params['key']
+        )) {
             $value = $this->transform($value);
         }
 
