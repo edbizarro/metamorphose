@@ -39,7 +39,9 @@ class BaseTransformer implements TransformInterface
         return $next($content);
     }
 
-    public function transform($field) {}
+    public function transform($field)
+    {
+    }
 
     /**
      * @param array $params
