@@ -71,7 +71,6 @@ class Metamorphose
         $this->defaultTransformers = (array) $transformers;
         $this->sourceConfig->load($sourceTransformers);
 
-
         return $this;
     }
 
@@ -118,7 +117,7 @@ class Metamorphose
                 'data' => $values,
                 'source' => $this->sourceType,
                 'sourceConfig' => $this->sourceConfig,
-                'type' => $type
+                'type' => $type,
             ])
             ->through($transformers)
             ->then(function ($data) {
