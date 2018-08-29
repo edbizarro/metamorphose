@@ -73,7 +73,7 @@ Metamorphose come with some useful transformers
 ```php
 app(Metamorphose::class)
     ->from(['name' => ' John', 'last_name' => ' Doe '])
-    ->through(NumericTransformer::class)
+    ->through(TrimTransformer::class)
     ->transform();
 
 // Output
