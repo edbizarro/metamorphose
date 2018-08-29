@@ -71,6 +71,8 @@ Metamorphose come with some useful transformers
 #### Trim
 
 ```php
+use \PowerDataHub\Metamorphose\Transformers\TrimTransformer;
+
 app(Metamorphose::class)
     ->from(['name' => ' John', 'last_name' => ' Doe '])
     ->through(TrimTransformer::class)
