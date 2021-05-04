@@ -3,8 +3,8 @@
 namespace PowerDataHub\Metamorphose;
 
 use Closure;
-use PowerDataHub\Metamorphose\Traits\Pipeable;
 use PowerDataHub\Metamorphose\Interfaces\TransformInterface;
+use PowerDataHub\Metamorphose\Traits\Pipeable;
 
 class BaseTransformer implements TransformInterface
 {
